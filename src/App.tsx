@@ -6,7 +6,7 @@ import { NavMenu } from './Components/Header/NavMenu';
 import { Sidebar } from './Components/Sidebar/Sidebar';
 import { WelcomePage } from './Components/WelcomeComponent/Welocme';
 // import { NotFound } from './Components/Notfound/NotFound'; // Вернусь позже
-const userIsAuth = false;
+const userIsAuth = false; //over time it will be transfered to Global
 function App() {
   return (
     <div className="App">
@@ -14,6 +14,9 @@ function App() {
         <div>
           <NavMenu />
           <Sidebar />
+          <Routes>
+            <Route path="/todos" element={<TodoList />} />
+          </Routes>
         </div>
       ) : (
         <div>
@@ -21,9 +24,6 @@ function App() {
           <WelcomePage />
         </div>
       )}
-      <Routes>
-        <Route path="/todos" element={<TodoList />} />
-      </Routes>
     </div>
   );
 }

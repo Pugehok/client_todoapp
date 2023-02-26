@@ -26,10 +26,10 @@ export const Sidebar = () => {
     }
   };
 
-  if (isOpenSideBar)
-    return (
-      <div>
-        <div className="w-64 h-screen bg-sky-200 m-0  text-white rounded-lg shadow-lg border-1 border-sky-250 ">
+  return (
+    <div className="h-1/2 inline-block ">
+      {isOpenSideBar ? (
+        <div className="w-56 h-screen bg-sky-200 m-0  text-white rounded-lg shadow-lg border-1 border-sky-250 my-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center mt-5">
               <Link to={'/'} className=" w-10  ml-1 text-xl font- float-left  ">
@@ -37,9 +37,9 @@ export const Sidebar = () => {
               </Link>
               <span className="ml-1 text-xl font-medium">ToDo</span>
             </div>
-            <Link to={'/close'} className="w-7 mr-3 mt-5">
+            <button className="w-10 mr-3 mt-5">
               <img src={Arrow} onClick={() => handelerSiderBarStatus(false)} />
-            </Link>
+            </button>
           </div>
           <div className="flex items-center justify-center flex-col mt-6">
             <img
@@ -50,7 +50,9 @@ export const Sidebar = () => {
             <span className="text-lg font-Unbounded mt-1">@pugehok</span>
             <ul className="flex flex-col ml-4 mt-3">
               <li className="flex items-center py-2">
-                <p className="text-2xl font-">Мои доски</p>
+                <Link to={'/todos'} className="text-2xl font-">
+                  Мои доски
+                </Link>
                 <img src={Board} className="w-5 h-5 ml-2 " />
               </li>
 
@@ -66,18 +68,17 @@ export const Sidebar = () => {
             </ul>
           </div>
         </div>
-      </div>
-    );
-  else
-    return (
-      <div className="w-64 h-screen">
-        <Link to={'/close'} className="w-7 mr-3 mt-5">
-          <img
-            src={Arrow}
-            onClick={() => handelerSiderBarStatus(true)}
-            className="bg-slate-400 w-10 h-10 rounded-full"
-          />
-        </Link>
-      </div>
-    );
+      ) : (
+        <div className="w-32 h-screen">
+          <button className="w-10 mr-3 mt-5">
+            <img
+              src={Arrow}
+              onClick={() => handelerSiderBarStatus(true)}
+              className="bg-slate-400 w-10 h-10 rounded-full"
+            />
+          </button>
+        </div>
+      )}
+    </div>
+  );
 };
